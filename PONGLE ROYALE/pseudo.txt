@@ -1,0 +1,315 @@
+import pygame
+import random
+import time
+
+
+#resolution
+screen width = 1240
+screen height = 720
+screen demensions is screen width and height
+screen caption is "PONG - Collin,G"
+#colors
+WHITE = (255,255,255)
+GRAY = (185,185,185)
+BLACK = (0,0,0)
+RED2 = (255, 0, 0)
+RED = (150, 0, 0)
+GREEN2 = (0, 255, 0)
+GREEN = (0, 200, 0)
+YELLOW2 = (255, 255, 0)
+YELLOW = (230, 230, 0)
+BLUE = (0,200,115)
+#list of colors
+colors = [WHITE,GRAY,RED,GREEN,YELLOW,BLUE]
+
+player1_score = int()
+player2_score = int()
+
+
+color is random chosen color from the list of colors
+
+
+red paddle = player#1.png
+blue paddle = player#2.png
+
+wKey = load('w.jpg')
+sKey = load('s.jpg')
+downKey = load('down.jpg')
+upKey = load('up.jpg')
+
+#demensions of paddles
+paddle1_WIDTH = 20
+paddle1_HEIGHT = 140
+paddle2_WIDTH = 10
+paddle2_HEIGHT = 240
+
+#mouse
+mouseClick checks if mouse is clicked
+mousePos is position of mouse
+#music
+play music1.mp3 a 300% volume
+loop music1.mp3
+
+def player1
+	display player1 along with x and y positions
+
+def player2
+	display player1 along with x and y positions
+
+def w
+	display image of w key
+
+def s
+	display image of s key
+
+def down
+	display image of down key
+
+def up
+	display image of up key
+
+def ball(ball demensions)
+	draw ball with demensions and x,y position
+
+def textObjects
+	chooses color and text
+
+
+def pauseRed
+	display "Red Won"
+	wait for 1000ms or 1s
+
+
+def pauseBlue
+	display "Blue Won"
+	wait for 1000ms or 1s
+
+def score1(count1)
+	show for for "Red" side
+
+def score2(count2)
+	show for for "Blue" side
+
+def mainMenu
+	ball x pos is 620 and ball y pos is 300
+	ball x speed is 8 and ball y speed is 12
+	radius of ball is 10
+	fill game background in white
+	
+	menu = True
+	while menu is True
+		for every event in pygame
+			if event is quit
+				quit pygame
+		
+		"Pongle Royale" in middle of the screen in font 90
+		"By Collin Guo" in middle of screen but further down in font 25
+		draw green rectangle to the bottom left
+		draw yellow rectangle to the bottom center
+		draw red rectangle to the bottom right
+		
+		draw black rectangle with no fill around green rectangle
+		draw black rectangle with no fill around yellow rectangle
+		draw black rectangle with no fill around red rectangle
+		
+		if mouse glides over green rectangle
+			green rectangle becomes a lighter shade of green
+i			if click on green rectangle
+				go to main()
+		
+		if mouse glides over yellow rectangle
+			yellow rectangle becomes a lighter shade of green
+i			if click on yellow rectangle
+				go to instructions()
+		
+		if mouse glides over red rectangle
+			red rectangle becomes a lighter shade of green
+i			if click on red rectangle
+				quit()
+		
+		
+		display "PLAY" over green rectangle
+		display "HOW TO PLAY" over yellow rectangle
+		display "QUIT" over rectangle
+
+		
+
+		draw ball and move ball with given speeds
+		if ball hits top or bottom wall
+			reverse the y speed
+			change fill color to random color in color list
+		
+		new ball x position is old ball x position + x speed
+		new ball y position is old ball y position + y speed
+		
+		update diplay
+		fps is 60
+
+def instructions()
+	check = True
+	while check = True
+		for every event in pygame
+			if event is quit
+				quit pygame
+	
+	fill background with random color
+	
+	display w at (350,100)
+	display s at (350,400)
+	display down at (650,100)
+	display up at (650,400)
+
+	display "Red Player (Left)" at (450,50) with font size 25
+	display "Blue Player (Right)" at (750,50) with font size 25
+	display "UP" at (250,200) with font size 25
+	display "DOWN" at (250,500) with font size 25
+	
+	draw yellow rectangle at (900,165)
+	draw black rectangle with no fill at (900,165)
+	display "First to 7 points wins" inside of rectangle
+	
+	draw yellow rectangle at (900,365)
+	draw black rentangle at (900,365)
+	display "Reflect the ball with your paddle" inside of rectangle
+
+	draw yellow rectangle at (900,565)
+	draw black rectangle at (900,565)
+	display "Score on the opposite side to gain points" inside of rectangle
+	
+	draw small green rectangle at (75,50)
+	draw small black rectangle at (75,50)
+
+	if mouse glides ove green rectangle
+		green rectangle becomes a lighter shade of green
+		if click on rectangle
+			return to the main menu
+	display "RETURN" in small green rectangle
+	
+	update display
+	fps is 60
+
+def mainLoop()
+	paddle1 pos x is screen width * 0.98	
+	paddle1 pos y is screen height * 0.45
+
+	paddle2 pos x is screen width * 0.01
+	paddle2 pos x is screen width * 0.45
+	y speed for paddle 1 is 0
+	y speed for paddle 2 is 0
+	ball starts in middle of screen
+	ball x speed is -18
+	ball y is 0 (for now)
+	ball radius is 10
+	player1 score starts at 0
+	player2 score starts at 0 
+	
+	wait 250ms before starting
+	
+	gameExit is False
+
+	while gameExit is False
+		for all events in pygame
+			if event is quit
+				quit pygame
+		
+			if event is a key held down
+				if key is up key
+					blue paddle y speed is -15
+				or if key is down key
+					blue paddle y speed is 15
+				or if key is w key
+					red paddle y speed is -15
+				or if key is s key
+					red paddle y speed is 15
+			
+			if event is a key lifted
+				if up key or down key is lifted
+					blue paddle speed = 0
+				or if w key or s key is lifted
+					red paddle speed = 0
+	
+		fill back ground with random selected color
+
+		draw green rectangle at (50,25)
+		draw black rectangle with no fill at same position
+		
+		mouseClick is to check is mouse is pressed
+		mousePos is to check the position of the mouse
+		
+		if mouse glides over green rectangle
+			rectangle becomes a lighter shade of green
+			if mouse clicks on rectangle
+				go back to main menu
+		
+		display "RETURN" on the green rectangle with font size 15
+
+		draw ball with given dimensions, surface, position, and color
+			
+		
+		if ball bewteen red paddle top and bottom AND between left end and right end
+			reverse ball x speed
+			y speed is based off how close the ball is to the middle of the paddle	
+		or if ball hits the sides of red paddle
+			x speed reversed
+
+		
+		if ball bewteen blue paddle top and bottom AND between left end and right end
+			reverse ball x speed
+			y speed is based off how close the ball is to the middle of the paddle	
+		or if ball hits the sides of blue paddle
+			x speed reversed
+	
+		
+		if ball hits bottom or top wall
+			reverse the y speed
+
+		
+		if ball hits blue side
+			ball position and paddle positions reset
+			add 1 to red score
+			ball goes to winning side (red)
+			wait 200ms
+
+		
+		if ball hits red side
+			ball position and paddle positions reset
+			add 1 to blue score
+			ball goes to winning side (blue)
+			wait 200ms
+
+		if red player score == 7
+			call pauseRed() function (says that red has won and waits 1s before match restarts)
+		if blue player score == 7 
+			call pauseBlue() functon (says that blue has won and waits 1s)
+
+		display score using function score1(player1_score) and score2(player2_score)
+
+		display scores
+		display paddles
+
+		if blue paddle goes reaches top edge
+			blue paddle speed = 0
+			repostion blue paddle to edge
+		if blue paddle goes of bottom edge
+			blue paddle speed = 0
+			repostition blue paddle to bottom edge
+
+		if red paddle goes reaches top edge
+			red paddle speed = 0
+			repostion red paddle to edge
+		if red paddle goes of bottom edge
+			red paddle speed = 0
+			repostition red paddle to bottom edge
+
+		
+		new ball position = old ball position + ball speed
+
+		new paddle position = old paddle position + paddle speed
+
+		update display
+		fps is 60
+
+call mainMenu() function to start game
+
+
+		
